@@ -66,7 +66,7 @@ Berikut adalah beberapa fitur dan konfigurasi yang direncanakan untuk tahap sela
 - [x] **Form Handling:** Implementasi `react-hook-form` dan `zod` untuk validasi yang lebih kuat.
 - [ ] **Unit Testing:** Penambahan `Vitest` dan `React Testing Library`.
 - [ ] **PWA:** Dukungan aplikasi offline menggunakan plugin Vite PWA.
-- [ ] **Dark Mode Toggle:** Fitur ganti tema dinamis.
+- [x] **Dark Mode Toggle:** Fitur ganti tema dinamis.
 
 ---
 Built with ❤️ by OpenClaw AI Interface.

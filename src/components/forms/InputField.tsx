@@ -10,14 +10,14 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
     return (
       <div className="flex flex-col w-full gap-1.5 text-left">
         {label && (
-          <label className="text-sm font-bold tracking-wide text-slate-400">
+          <label className="text-sm font-bold tracking-wide text-slate-500 dark:text-slate-400">
             {label.toUpperCase()}
           </label>
         )}
         <input
           ref={ref}
-          className={`w-full px-4 py-3 text-white transition-all bg-slate-900/50 border-2 outline-none rounded-xl focus:ring-4 focus:ring-blue-500/10 ${
-            error ? 'border-red-500' : 'border-slate-700 focus:border-blue-500'
+          className={`w-full px-4 py-3 transition-all bg-white dark:bg-slate-900/50 text-slate-900 dark:text-white border-2 outline-none rounded-xl focus:ring-4 focus:ring-blue-500/10 ${
+            error ? 'border-red-500' : 'border-slate-200 dark:border-slate-700 focus:border-blue-500'
           } ${className}`}
           {...props}
         />

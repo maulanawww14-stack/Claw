@@ -1,5 +1,7 @@
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { useUserStore } from './store/userStore'
+import { useThemeStore } from './store/themeStore'
 import Navbar from './components/layout/Navbar'
 import HomePage from './pages/Home/HomePage'
 import DashboardPage from './pages/Dashboard/DashboardPage'
@@ -7,10 +9,20 @@ import ProfilePage from './pages/Profile/ProfilePage'
 
 function App() {
   const { isLoggedIn } = useUserStore()
+  const { theme } = useThemeStore()
+
+  // Handle Theme Switch
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [theme])
 
   return (
     <Router>
-      <div className="min-h-screen bg-slate-900 text-slate-100 selection:bg-blue-500/30">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 selection:bg-blue-500/30 transition-colors duration-300">
         <Navbar />
         
         <main className="pt-24 pb-12 min-h-screen relative overflow-hidden">
@@ -33,8 +45,8 @@ function App() {
           </Routes>
         </main>
 
-        <footer className="py-10 text-center border-t border-slate-800/50">
-          <p className="text-sm font-medium text-slate-600">
+        <footer className="py-10 text-center border-t border-slate-200 dark:border-slate-800/50">
+          <p className="text-sm font-medium text-slate-400 dark:text-slate-600">
             &copy; 2026 OpenClaw Development Interface. All rights reserved.
           </p>
         </footer>

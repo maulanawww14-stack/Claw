@@ -1,7 +1,6 @@
 import React from 'react';
-import { useUserStore } from '../../store/userStore';
-import Button from '../../components/common/Button';
-import InputField from '../../components/forms/InputField';
+import { useUserStore } from '../../../container/app/userStore';
+import { Button, InputField } from '../../../components';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -59,7 +58,7 @@ const ProfilePage: React.FC = () => {
             label="Display Name"
             placeholder="Update your name..."
             error={errors.displayName?.message}
-            className="bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white"
+            className="bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:white"
             {...register('displayName')}
           />
           

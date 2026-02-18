@@ -1,11 +1,9 @@
 import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { useUserStore } from './store/userStore'
-import { useThemeStore } from './store/themeStore'
-import Navbar from './components/layout/Navbar'
-import HomePage from './pages/Home/HomePage'
-import DashboardPage from './pages/Dashboard/DashboardPage'
-import ProfilePage from './pages/Profile/ProfilePage'
+import { useUserStore } from './userStore'
+import { useThemeStore } from './themeStore'
+import { Navbar } from '../../components/organisms'
+import { HomePage, DashboardPage, ProfilePage } from '../pages'
 
 function App() {
   const { isLoggedIn } = useUserStore()

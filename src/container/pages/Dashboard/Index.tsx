@@ -1,5 +1,5 @@
 import React from 'react';
-import { useUserStore } from '../../store/userStore';
+import { useUserStore } from '../../../container/app/userStore';
 
 const DashboardPage: React.FC = () => {
   const { username } = useUserStore();

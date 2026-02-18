@@ -14,6 +14,10 @@ function App() {
         <Navbar />
         
         <main className="pt-24 pb-12 min-h-screen relative overflow-hidden">
+          {/* Background Ambient Light */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-blue-600/10 blur-[150px] pointer-events-none rounded-full" />
+          <div className="absolute bottom-0 right-0 w-64 h-64 bg-emerald-600/5 blur-[100px] pointer-events-none rounded-full" />
+          
           <Routes>
             <Route path="/" element={<HomePage />} />
             

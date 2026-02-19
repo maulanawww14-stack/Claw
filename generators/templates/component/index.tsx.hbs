@@ -1,0 +1,16 @@
+import React from 'react';
+
+interface {{pascalCase name}}Props {
+  // Define props here
+  children?: React.ReactNode;
+}
+
+const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> = ({ children }) => {
+  return (
+    <div className="">
+      {children || '{{pascalCase name}} Component'}
+    </div>
+  );
+};
+
+export default {{pascalCase name}};

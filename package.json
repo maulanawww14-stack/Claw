@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "generate": "plop --plopfile ./generators/plopfile.js"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +28,7 @@
     "@vitest/coverage-v8": "^4.0.18",
     "autoprefixer": "^10.4.24",
     "playwright": "^1.58.2",
+    "plop": "^4.0.5",
     "postcss": "^8.5.6",
     "storybook": "^10.2.10",
     "tailwindcss": "^3.4.19",

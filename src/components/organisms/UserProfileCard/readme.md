@@ -1,16 +1,16 @@
-# Rating Molecule
+# UserProfileCard Organism
 
-Industrial rating indicator using icons
+Large identity block with cover and stats
 
 ## Usage
 
 ```tsx
-import { Rating } from '@/components/molecules';
+import { UserProfileCard } from '@/components/organisms';
 
 const MyComponent = () => (
-  <Rating>
+  <UserProfileCard>
     Content
-  </Rating>
+  </UserProfileCard>
 );
 ```
 

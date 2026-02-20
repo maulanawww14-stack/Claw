@@ -12,3 +12,4 @@ export { default as Icon } from './Icon';
 export { default as Loader } from './Loader';
 export { default as Divider } from './Divider';
 export { default as MenuItem } from './MenuItem';
+export { default as Rating } from './Rating';

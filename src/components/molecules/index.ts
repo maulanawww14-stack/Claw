@@ -11,7 +11,6 @@ export { default as CardHeader } from './CardHeader';
 export { default as CardFooter } from './CardFooter';
 export { default as StatWidget } from './StatWidget';
 export { default as Alert } from './Alert';
-export { default as Rating } from './Rating';
 export { default as LoadingWrapper } from './LoadingWrapper';
 export { default as SocialShare } from './SocialShare';
 export { default as TagGroup } from './TagGroup';

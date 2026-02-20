@@ -1,178 +1,154 @@
 import React, { useState } from 'react';
+import { useUserStore } from '../../../container/app/userStore';
 import { 
   TextStyle, 
   Grid, 
   Button, 
-  Checkbox, 
-  RadioButton, 
-  Select, 
-  Anchor, 
-  Icon, 
-  Loader, 
-  Divider,
   Badge,
   BaseContainer,
-  FormField,
-  SearchBar,
-  InputGroup,
-  CheckboxGroup,
-  DropdownMenu,
-  Breadcrumbs,
-  Pagination,
-  Tabs,
-  CardHeader,
-  CardFooter,
-  StatWidget,
-  Alert,
+  Divider,
+  Icon,
+  Loader,
   Rating,
-  LoadingWrapper,
-  SocialShare,
-  TagGroup,
-  AccordionHeader
+  // Organisms
+  HeroSection,
+  FeatureList,
+  FaqAccordion,
+  ProductGrid,
+  DataTable,
+  UserProfileCard,
+  AnalyticsDashboard,
+  Modal,
+  CookieConsent,
+  Stepper,
+  RegistrationForm,
+  CheckoutModule,
+  CommentSection
 } from '../../../components';
 
 const ExamplePage: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [activeTab, setActiveTab] = useState('tab-1');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
-  const [selectedValues, setSelectedValues] = useState(['opt-1']);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <BaseContainer maxWidth="full" padding={false} className="space-y-20 font-mono pb-40">
-      <header className="border-l-8 border-[#ff5f00] pl-6">
-        <TextStyle variant="caption" className="text-slate-500 mb-1">UI_COMPONENT_MANIFEST // INDUSTRIAL_VERSION_2.0</TextStyle>
-        <TextStyle variant="h2" weight="black" italic className="tracking-tighter">COMPONENT_SANDBOX</TextStyle>
-      </header>
+    <BaseContainer maxWidth="full" padding={false} className="space-y-20 font-mono pb-60">
+      <HeroSection 
+        subtitle="Industrial_Framework_v2.0"
+        title="Engineering Better Frontend Architecture."
+        description="A comprehensive library of professional UI organisms designed for high-scale enterprise applications and industrial control systems."
+        primaryAction={{ label: 'Explore_Library', onClick: () => {} }}
+        secondaryAction={{ label: 'View_Manual', onClick: () => {} }}
+      />
 
-      {/* Basic Atoms Showcase */}
-      <section className="space-y-8">
-        <Divider label="ATOMIC_UNITS" dashed />
-        <Grid cols={3} gap={6}>
-          <div className="p-8 border-4 border-slate-900 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-4">
-            <TextStyle variant="caption">{'>>'} Logic_Gates</TextStyle>
-            <Checkbox label="Link_Established" defaultChecked />
-            <RadioButton name="env" label="Secure_Instance" defaultChecked />
-            <Divider dashed className="my-4" />
-            <Rating value={4.5} />
-          </div>
+      <BaseContainer maxWidth="lg" className="space-y-32">
+        {/* Section 1: Features */}
+        <FeatureList 
+          title="Core_System_Capabilities"
+          features={[
+            { icon: 'Zap', title: 'Real-time Logic', description: 'Blazing fast state synchronization using Zustand persistent storage.' },
+            { icon: 'ShieldCheck', title: 'Secure Protocols', description: 'Integrated auth-guards and enterprise-grade validation skemata.' },
+            { icon: 'Cpu', title: 'Modular Design', description: 'Atomic-based component architecture for infinite scalability.' },
+          ]}
+        />
 
-          <div className="p-8 border-4 border-slate-900 dark:border-slate-800 bg-white dark:bg-slate-900/50 flex flex-col items-center justify-center gap-6">
-             <Loader size="lg" />
-             <TextStyle variant="caption" className="animate-pulse">Data_Stream_Loading</TextStyle>
-          </div>
+        {/* Section 2: Data Presentation */}
+        <section className="space-y-12">
+           <Divider label="DATA_REPRESENTATION_MODULES" dashed />
+           <AnalyticsDashboard />
+           
+           <Divider label="RECORD_MANAGEMENT_GRID" dashed className="mt-20" />
+           <DataTable 
+             columns={[
+               { key: 'id', label: 'ID' },
+               { key: 'status', label: 'Status' },
+               { key: 'node', label: 'Node_Cluster' },
+               { key: 'uptime', label: 'Uptime' }
+             ]}
+             data={[
+               { id: 'NODE_01', status: 'Active', node: 'Cluster_Alpha', uptime: '142h' },
+               { id: 'NODE_02', status: 'Standby', node: 'Cluster_Beta', uptime: '12h' },
+               { id: 'NODE_03', status: 'Offline', node: 'Cluster_Alpha', uptime: '0h' },
+             ]}
+             currentPage={1}
+             totalPages={5}
+             onPageChange={() => {}}
+             onSearch={() => {}}
+           />
+        </section>
 
-          <div className="p-8 border-4 border-slate-900 dark:border-slate-800 bg-[#ff5f00] text-white space-y-4">
-             <TextStyle variant="caption" className="text-white/70">{'>>'} Emergency_Bypass</TextStyle>
-             <TextStyle variant="h3" weight="black">PRIMARY_OVERRIDE_ENABLED</TextStyle>
-             <Button variant="secondary" className="w-full bg-white text-black border-white">RECOVER_SESSION</Button>
-          </div>
-        </Grid>
-      </section>
-
-      {/* Navigation & Layout Molecules */}
-      <section className="space-y-8">
-        <Divider label="NAVIGATION_STRUCTURES" dashed />
-        <div className="space-y-12">
-          <Breadcrumbs 
-            items={[
-              { label: 'System', path: '#' },
-              { label: 'Modules', path: '#' },
-              { label: 'Example_UI' },
-            ]} 
-          />
-
-          <Tabs 
-            items={[
-              { id: 'tab-1', label: 'Primary_Data' },
-              { id: 'tab-2', label: 'Network_Stats' },
-              { id: 'tab-3', label: 'Security_Logs' },
-            ]}
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-          />
-
-          <div className="flex flex-wrap items-center justify-between gap-8 p-10 border-4 border-slate-900 dark:border-slate-800 bg-slate-100 dark:bg-slate-950">
-             <Pagination 
-               currentPage={currentPage} 
-               totalPages={5} 
-               onPageChange={setCurrentPage} 
-             />
-             <DropdownMenu 
-               label="Export_Type" 
-               options={[
-                 { label: 'Download JSON', value: 'json', icon: 'FileJson' },
-                 { label: 'Download CSV', value: 'csv', icon: 'FileSpreadsheet' },
-               ]} 
-               onSelect={(val) => alert(`EXPORT: ${val}`)}
-             />
-          </div>
-        </div>
-      </section>
-
-      {/* Content & Feedback Molecules */}
-      <section className="space-y-8">
-        <Divider label="DATA_ORCHESTRATION" dashed />
-        <Grid cols={2} gap={8}>
-           <div className="space-y-6">
-              <Alert type="warning" title="CORE_TEMPERATURE_HIGH">
-                Cooling system at 85% capacity. Immediate intervention required to prevent hardware throttle.
-              </Alert>
-              <Alert type="success" title="ENCRYPTION_COMPLETE">
-                All data packets successfully hashed using SHA-256 protocol.
-              </Alert>
-              <AccordionHeader 
-                title="Advanced_Parameters" 
-                subtitle="Configure kernel-level overrides"
-                isOpen={isAccordionOpen}
-                onToggle={() => setIsAccordionOpen(!isAccordionOpen)}
+        {/* Section 3: Identity & Social */}
+        <section className="space-y-12">
+           <Divider label="IDENTITY_SYSTEMS" dashed />
+           <Grid cols={1} gap={0}>
+              <UserProfileCard 
+                username="MAULANA_WWW14"
+                role="Lead Developer"
+                email="maulana@vps.internal"
+                bio="Focused on high-performance agentic coding and industrial-grade web architecture. Operating system: Claw_OS."
+                stats={[
+                   { label: 'PROJECTS', value: '42' },
+                   { label: 'DEPLOYMENTS', value: '1.2K' },
+                   { label: 'VPC_NODES', value: '08' },
+                   { label: 'UPTIME', value: '99%' },
+                ]}
               />
-              {isAccordionOpen && (
-                <div className="p-8 border-x-4 border-b-4 border-slate-900 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-4">
-                  <CheckboxGroup 
-                    label="ENABLE_MODULES"
-                    options={[
-                      { label: 'Auto-Repair', value: 'opt-1' },
-                      { label: 'Deep-Scan', value: 'opt-2' },
-                      { label: 'Legacy-Mode', value: 'opt-3' },
-                    ]}
-                    values={selectedValues}
-                    onChange={setSelectedValues}
-                  />
-                </div>
-              )}
-           </div>
+           </Grid>
+        </section>
 
-           <div className="space-y-6">
-              <div className="border-4 border-slate-900 dark:border-slate-800 overflow-hidden bg-white dark:bg-slate-900">
-                <CardHeader 
-                  title="Satellite_Link" 
-                  subtitle="Active Connection: SAT-X7"
-                  action={<Badge>Uplink: 1.2GB/s</Badge>}
-                />
-                <div className="p-8">
-                   <StatWidget 
-                     label="Current_Throughput" 
-                     value="842" 
-                     unit="MBPS" 
-                     icon="Network"
-                     trend={{ value: 12.4, isUp: true }}
-                   />
-                </div>
-                <CardFooter variant="muted">
-                   <TagGroup tags={['Active', 'Secure', 'Quantum']} />
-                   <SocialShare url="https://github.com" title="Claw System Asset" />
-                </CardFooter>
-              </div>
+        {/* Section 4: Complex Flows */}
+        <section className="space-y-12">
+           <Divider label="TRANSACTIONAL_WORKFLOWS" dashed />
+           <Stepper 
+             steps={[
+               { id: 1, label: 'Identity_Check', description: 'Verify operator credentials' },
+               { id: 2, label: 'Resource_Alloc', description: 'Allocate virtual cores' },
+               { id: 3, label: 'Deployment', description: 'Execute final script' },
+             ]} 
+             activeStep={2}
+           />
+           
+           <div className="grid grid-cols-1 gap-16 mt-20">
+              <RegistrationForm />
+              <CheckoutModule />
            </div>
-        </Grid>
-      </section>
+        </section>
 
-      <LoadingWrapper isLoading={false}>
-        <div className="text-center opacity-30">
-          <TextStyle variant="caption">Claw_System_v2.0 // All_Modules_Operational</TextStyle>
-        </div>
-      </LoadingWrapper>
+        {/* Section 5: Interaction & Dialogs */}
+        <section className="space-y-12">
+           <Divider label="OVERLAY_INTERACTION_HANDLERS" dashed />
+           <div className="flex justify-center gap-8 p-20 border-4 border-dashed border-slate-300 dark:border-slate-800">
+              <Button size="lg" onClick={() => setIsModalOpen(true)}>Execute_Modal_Sequence</Button>
+              <Button variant="secondary" size="lg">Trigger_Toast_v1</Button>
+           </div>
+           
+           <Modal 
+             isOpen={isModalOpen} 
+             onClose={() => setIsModalOpen(false)} 
+             title="KERNEL_ACCESS_REQUEST"
+             subtitle="SECURITY_CLEARANCE_LEVEL_04_REQUIRED"
+           >
+              <p className="text-sm font-bold uppercase leading-relaxed text-slate-600 dark:text-slate-400">
+                // System warning: You are about to access core kernel parameters. 
+                Incorrect configuration may lead to catastrophic failure of the virtual instance. 
+                Do you wish to proceed with the handshake?
+              </p>
+           </Modal>
+
+           <FaqAccordion 
+             items={[
+               { question: 'What is the standard encryption?', answer: 'We use 256-bit AES protocol for all incoming and outgoing data streams.' },
+               { question: 'How to rotate API keys?', answer: 'Access the identity management panel and trigger the rotate_identity_v1 command.' }
+             ]}
+           />
+        </section>
+
+        {/* Section 6: Engagement */}
+        <section className="space-y-12">
+           <Divider label="USER_ENGAGEMENT_STREAM" dashed />
+           <CommentSection />
+        </section>
+      </BaseContainer>
+
+      <CookieConsent />
     </BaseContainer>
   );
 };

@@ -2,13 +2,13 @@ import React from 'react';
 import { useUserStore } from '../../../container/app/userStore';
 
 const DashboardPage: React.FC = () => {
-  const { username } = useUserStore();
+  const { user } = useUserStore();
 
   return (
     <div className="max-w-6xl mx-auto pt-10 px-6">
       <header className="mb-10">
         <h1 className="text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Dashboard</h1>
-        <p className="text-slate-500 dark:text-slate-400">Welcome back, {username || 'Commander'}.</p>
+        <p className="text-slate-50 dark:text-slate-400">Welcome back, {user?.username || 'Commander'}.</p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

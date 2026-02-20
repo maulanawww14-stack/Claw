@@ -7,11 +7,11 @@ interface RequireAuthProps {
 }
 
 const RequireAuth: React.FC<RequireAuthProps> = ({ children }) => {
-  const { isLoggedIn } = useUserStore();
+  const { isLoggedIn, token } = useUserStore();
   const location = useLocation();
 
-  if (!isLoggedIn) {
-    // Redirect ke profile (login) tapi simpan lokasi asal agar bisa balik lagi setelah login
+  // Sekarang kita cek juga keberadaan token untuk keamanan tambahan
+  if (!isLoggedIn || !token) {
     return <Navigate to="/profile" state={{ from: location }} replace />;
   }
 

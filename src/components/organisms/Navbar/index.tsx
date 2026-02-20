@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
                   <Button variant="secondary" size="sm" onClick={handleLogout} className="!px-2 !py-1 !text-[10px]">Eject</Button>
                 </div>
               ) : (
-                <Link to="/profile">
+                <Link to="/login">
                   <Button variant="primary" size="sm" className="!px-3 !py-1 !text-[10px]">Auth_System</Button>
                 </Link>
               )}

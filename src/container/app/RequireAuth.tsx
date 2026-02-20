@@ -12,7 +12,7 @@ const RequireAuth: React.FC<RequireAuthProps> = ({ children }) => {
 
   // Sekarang kita cek juga keberadaan token untuk keamanan tambahan
   if (!isLoggedIn || !token) {
-    return <Navigate to="/profile" state={{ from: location }} replace />;
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   return children;

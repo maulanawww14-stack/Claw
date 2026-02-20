@@ -48,7 +48,7 @@ export default function (plop) {
       {
         type: 'add',
         path: '../src/components/{{lowerCase type}}s/{{pascalCase name}}/readme.md',
-        templateFile: 'generators/templates/component/readme.md.hbs',
+        templateFile: 'templates/component/readme.md.hbs',
       },
       {
         type: 'add',

@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import Badge from '../index';
 
-describe('Badge', () => {
+describe('Badge Atom', () => {
   it('renders successfully', () => {
-    render(<Badge />);
-    expect(screen.getByText(/Badge/i)).toBeDefined();
+    render(<Badge>New</Badge>);
+    expect(screen.getByText(/New/i)).toBeDefined();
   });
 });

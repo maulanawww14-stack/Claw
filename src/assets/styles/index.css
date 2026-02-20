@@ -3,12 +3,32 @@
 @tailwind utilities;
 
 @layer base {
-  html.dark {
-    background-color: #0f172a;
-    color: #f1f5f9;
+  :root {
+    --color-safety-orange: 255 95 0;
+    --color-warning-yellow: 255 191 0;
   }
+
   html {
-    background-color: #f8fafc;
-    color: #0f172a;
+    font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+    background-color: #f1f5f9; /* Slate 100 */
+    color: #0f172a; /* Slate 900 */
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html.dark {
+    background-color: #020617; /* Slate 950 */
+    color: #f8fafc; /* Slate 50 */
+  }
+
+  body {
+    @apply min-h-screen transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .industrial-grid {
+    background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.05;
   }
 }

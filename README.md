@@ -64,7 +64,7 @@ Berikut adalah beberapa fitur dan konfigurasi yang direncanakan untuk tahap sela
 - [x] **Routing:** Implementasi `react-router-dom` untuk navigasi antar halaman.
 - [ ] **Authentication:** Integrasi penuh login dengan backend service.
 - [x] **Form Handling:** Implementasi `react-hook-form` dan `zod` untuk validasi yang lebih kuat.
-- [ ] **Unit Testing:** Penambahan `Vitest` dan `React Testing Library`.
+- [x] **Unit Testing:** Penambahan `Vitest` dan `React Testing Library`.
 - [ ] **PWA:** Dukungan aplikasi offline menggunakan plugin Vite PWA.
 - [x] **Dark Mode Toggle:** Fitur ganti tema dinamis.
 

@@ -1,14 +1,22 @@
 import axios from 'axios';
 
-// Membuat instance Axios dasar
-const api = axios.create({
+// Instance untuk API Backend Utama (Mock)
+export const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || 'https://api.example.com',
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Interceptor untuk menambahkan token ke setiap request
+// Instance untuk API Trading (Real-time di server)
+export const tradingApi = axios.create({
+  baseURL: 'http://10.0.0.1:3001/api/trading',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// Interceptor untuk API Utama
 api.interceptors.request.use(
   (config) => {
     const authData = localStorage.getItem('auth-storage');
@@ -21,18 +29,6 @@ api.interceptors.request.use(
     return config;
   },
   (error) => Promise.reject(error)
-);
-
-// Interceptor untuk menangani error global (misal: token expired)
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
-      // Logika logout otomatis jika token tidak valid
-      console.error('Unauthorized, logging out...');
-    }
-    return Promise.reject(error);
-  }
 );
 
 export default api;
